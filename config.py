@@ -4,7 +4,8 @@ import colors
 game = {
     "title": "Tamalou",
     "resolution": (1280, 720),
-    "resizable": False  # pygame.RESIZABLE
+    "resizable": False,  # pygame.RESIZABLE
+    "framerate": 60
 }
 
 card = {

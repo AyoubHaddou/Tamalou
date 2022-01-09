@@ -9,6 +9,9 @@ from player import Player
 pg.init()
 pg.display.set_caption(config.game["title"])
 
+# set pygame clock
+clock = pg.time.Clock()
+
 # font
 _font = pg.font.SysFont("Comic Sans MS", 30)
 
@@ -56,3 +59,5 @@ while not exited:
         card.draw(_display, _font)
 
     pg.display.flip()
+
+    clock.tick(config.game["framerate"])
