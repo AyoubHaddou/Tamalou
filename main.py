@@ -44,6 +44,7 @@ players = [
 ]
 
 
+<<<<<<< HEAD
 party = Game()
 party.set_players(players)
 party.init_game(players,deck,pos_x,pos_y)
