@@ -1,27 +1,33 @@
 from pygame import draw, Rect, display
 import config
 import colors
+from dataclasses import dataclass, field
 
 
+@dataclass
 class Card:
 
+    id: int
     value: int
     name: str
-    owner: int
+    color: int
     pos_x: int
     pos_y: int
     width: int
     height: int
     visible: bool
 
-    def __init__(self, visible):
+    def __init__(self, id, name, value, color, visible):
+        self.id = id
+        self.name = name
+        self.value = value
+        self.color = color
+        self.visible = visible
         self.pos_x = 0
         self.pos_y = 0
-        self.visible = visible
         self.width = config.card["width"]
         self.height = config.card["height"]
         self.background = colors.GRAY
-        self.value = "9"
 
     def draw(self, _display, _font) -> None:
 
@@ -36,16 +42,16 @@ class Card:
 
         if self.visible:
             # display top number
-            top_label = _font.render(self.value, 1, colors.BLACK)
+            top_label = _font.render(self.name, 1, colors.BLACK)
             _display.blit(top_label, (self.pos_x + 5, self.pos_y))
 
             # display bottom number
-            bottom_label = _font.render(self.value, 1, colors.BLACK)
+            bottom_label = _font.render(self.name, 1, colors.BLACK)
             _display.blit(bottom_label, (self.pos_x + 75, self.pos_y + 160))
 
-    def set_coordinates(self, coordinates: tuple) -> None:
+    def set_coordinates(self, coordinates) -> None:
         self.pos_x = coordinates[0]
         self.pos_y = coordinates[1]
 
-    def card_total_width(self) -> int:
+    def total_width(self) -> int:
         return self.width + config.card["padding"]
