@@ -1,21 +1,21 @@
-from pygame import display, event, QUIT, init, font
+import pygame as pg
 from card import Card
 
 import config
 
 # init game & set title
-init()
-display.set_caption(config.game["title"])
+pg.init()
+pg.display.set_caption(config.game["title"])
 
 # font
 _font = font.SysFont("Comic Sans MS", 30)
 
 # set size window
-_display = display.set_mode(
+_display = pg.display.set_mode(
     config.game["resolution"], config.game["resizable"])
 
 # refresh container
-display.flip()
+pg.display.flip()
 
 # launch the game
 exited = False
@@ -35,10 +35,10 @@ for i in range(4):
     cards.append(_card)
 
 while not exited:
-    for e in event.get():
-        exited = True if e.type == QUIT else False
+    for e in pg.event.get():
+        exited = True if e.type == pg.QUIT else False
 
     for card in cards:
         card.draw(_display, _font)
 
-    display.flip()
+    pg.display.flip()
