@@ -44,7 +44,7 @@ players = [
 ]
 
 
-<<<<<<< HEAD
+# Affiche les 4 premières cartes de la party 
 party = Game()
 party.set_players(players)
 party.init_game(players,deck,pos_x,pos_y)
@@ -58,8 +58,7 @@ while not exited:
     for card in players[0].hand:
         card.draw(_display, _font)
         
-    
-    # Affiche la pioche 
+    # Affiche la carte suivante dans le deck principal  (à repositionner)
     deck.cards[0].draw(_display, _font)
 
     pg.display.flip()
